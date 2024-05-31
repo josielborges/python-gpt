@@ -64,11 +64,13 @@ def analyze_sentiment(product):
 
         response_text = response.choices[0].message.content
         save(f"./data/analise-{product}.txt", response_text)
-        print(f"Processo concluído.\nResultado salvo em ./data/analise-{product}.txt")
+        print(f"Concluído. Resultado salvo em ./data/analise-{product}.txt")
     except openai.AuthenticationError as e:
         print(f"Erro de Autenticação: {e}")
     except openai.APIError as e:
         print(f"Erro de API: {e}")
 
 
-analyze_sentiment("Maquiagem mineral")
+products = ["Camisetas de algodão orgânico", "Jeans feitos com materiais reciclados", "Maquiagem mineral"]
+for product in products:
+    analyze_sentiment(product)
